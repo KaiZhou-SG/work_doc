@@ -1,0 +1,9 @@
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\bin\Debug\IPL_Messaging_System_UI.exe.config
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\bin\Debug\IPL_Messaging_System_UI.exe
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\bin\Debug\IPL_Messaging_System_UI.pdb
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\obj\Debug\IPL_Messaging_System_UI.csprojResolveAssemblyReference.cache
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\obj\Debug\IPL_Messaging_System_UI.MainForm.resources
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\obj\Debug\IPL_Messaging_System_UI.Properties.Resources.resources
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\obj\Debug\IPL_Messaging_System_UI.csproj.GenerateResource.Cache
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\obj\Debug\IPL_Messaging_System_UI.exe
+c:\users\support\documents\src\csharp\IPL_Messaging_System_UI\IPL_Messaging_System_UI\obj\Debug\IPL_Messaging_System_UI.pdb

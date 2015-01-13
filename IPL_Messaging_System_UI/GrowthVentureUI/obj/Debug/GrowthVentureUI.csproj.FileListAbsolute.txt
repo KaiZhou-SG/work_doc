@@ -1,0 +1,12 @@
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\bin\Debug\GrowthVentureUI.exe.config
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\bin\Debug\GrowthVentureUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\bin\Debug\GrowthVentureUI.pdb
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\obj\Debug\GrowthVentureUI.csprojResolveAssemblyReference.cache
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\obj\Debug\GrowthVentureUI.csproj.GenerateResource.Cache
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\obj\Debug\IPL_MSGUI.GrowthVentureUI.Properties.Resources.resources
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_GrowthVentureUI.exe.config
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_GrowthVentureUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_GrowthVentureUI.pdb
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\obj\Debug\MSGUI_GrowthVentureUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\obj\Debug\MSGUI_GrowthVentureUI.pdb
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\GrowthVentureUI\obj\Debug\IPL_MSGUI.GrowthVentureUI.Frm_MsgMonitoring.resources

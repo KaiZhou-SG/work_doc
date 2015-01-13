@@ -1,0 +1,11 @@
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\PlannerUI\bin\Debug\PlannerUI.exe.config
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\PlannerUI\bin\Debug\PlannerUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\PlannerUI\bin\Debug\PlannerUI.pdb
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\PlannerUI\obj\Debug\PlannerUI.csprojResolveAssemblyReference.cache
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\PlannerUI\obj\Debug\PlannerUI.csproj.GenerateResource.Cache
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\PlannerUI\obj\Debug\IPL_MSGUI.PlannerUI.Properties.Resources.resources
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_PlannerUI.exe.config
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_PlannerUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_PlannerUI.pdb
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\PlannerUI\obj\Debug\MSGUI_PlannerUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\PlannerUI\obj\Debug\MSGUI_PlannerUI.pdb

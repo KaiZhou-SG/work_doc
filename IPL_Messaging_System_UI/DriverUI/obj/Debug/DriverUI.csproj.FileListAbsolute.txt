@@ -1,0 +1,12 @@
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\bin\Debug\DriverUI.exe.config
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\bin\Debug\DriverUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\bin\Debug\DriverUI.pdb
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\obj\Debug\DriverUI.csprojResolveAssemblyReference.cache
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\obj\Debug\DriverUI.csproj.GenerateResource.Cache
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\obj\Debug\IPL_MSGUI.DriverUI.Properties.Resources.resources
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_DriverUI.exe.config
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_DriverUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\bin\MSGUI_DriverUI.pdb
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\obj\Debug\MSGUI_DriverUI.exe
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\obj\Debug\MSGUI_DriverUI.pdb
+C:\Users\support\Documents\src\csharp\IPL_Messaging_System_UI\DriverUI\obj\Debug\IPL_MSGUI.DriverUI.Frm_MDT.resources
