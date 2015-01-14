@@ -1,0 +1,8 @@
+1 revise the technical document(specification + design), 1 day, 2015-01-14 
+2 complete the server side for transport module, 2 days, 2015-01-15 ~ 16 
+3 complete the general web api client package, 1 day, 2015-01-19
+4 complete the front end for transport module, 1 day, 2015-01-20 
+5 complete the server side for growth_venture, 2 days, 2015-01-21 ~ 22
+6 complete the front end for growth_venture, 1 day, 2015-01-23
+7 complete the front + server side for driver, 2 days, 2015-01-26 ~ 27
+8 full system testing, 3 days, 2015-01-28 ~ 30
