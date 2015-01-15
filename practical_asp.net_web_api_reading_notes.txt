@@ -6,3 +6,101 @@ Chapter 2 Debugging and Tracing
 2 Following the above requirement, equally important is the ability to hand-craft requests, submit them
   to ASP.NET Web API, and view the corresponding response from ASP.NET Web API.
 3 Web browsers usually come with built-in tools to capture and inspect the HTTP traffic.
+4 Besides the above, another key aspect of debugging ASP.NET Web API is tracing. Tracing the framework
+  code is essential for understanding what goes on behind the scenes as ASP.NET Web API handles a request,
+  calls your code at the right moment, and sends back a response.
+
+Chapter 3 Media-Type Formatting CLR Objects
+
+1 From the ASP.NET Web API perspective, serialization is the process of translating a .NET Common Langu-
+  age Runtime(CLR) type into a format that can be transmitted over HTTP. The format is either JSON or XML,
+  out of the box.
+2 The MediaTypeFormatter object in the ASP.NET Web API pipline performs the serialization. It seralizes
+  the object returned by the action method into JSON or XML, which is then written into the response mes-
+  sage body.
+3 The media formatters that produce JSON and XML are respectively JsonMediaTypeFormatter and XmlMediaTyp-
+  eFormatter, both deriving from MediaTypeFormatter. The process through which the MediaTypeFormatter is 
+  chosen is called content negotiation, commonly shortened to conneg.
+4 A resource can have one or more representations. The Accept request header can be used by a client to i-
+  ndicate the set of preferred representations for the resource in the reponse.
+5 Which members are serialized?
+  1) The public fields and properties are serialized by default with both Json.NET and DataContractSeria-
+    lizer.
+  2) The read-only properties(properties with only the getter) are serialized by Json.NET but not by
+    DataContractSerializer.
+  3) The private, protected, internal members are not serialized
+  4) Blacklisting members:
+    [JsonIgnore] --> Ignore only by Json.NET
+    [IgnoreDataMember] --> Ignore by both Json.NET and DCS
+  5) Whitelisting members:
+    To prevent all members from being serialized by default, apply the DataContract attribute at the class
+    level. Then apply the DataMember attribute to only those members(including the private ones) that you
+    want to be serialized.
+6 Controlling how members are serialized
+  1) Json.NET --> CLR objects --> JSON
+  2) DataContractSerializer --> CLR objects --> XML
+  3) { config.Formatters.XmlFormatter.UseXmlSerializer = true; // now can use XMLSerializer instead of
+    // DataContractSerializer --> CLR objects -- XML
+7 Controlling member names
+  1) By default, the names of the members are used as-is while creating the serialized representation.
+  2) It is possible to change the names.
+    a) In case of JSON:
+      [JsonProperty(PropertyName="Identifier")]
+      public int Id {get; set;}
+    b) In case of XML:
+      [DataMember(Name="FamilyName)] // no effect unless DataContract is used
+      public String LastName {get; set;}
+8 Anonymous types:
+    Suppose you need to return only two properties, say Id and a new property called Name, which is nothing
+  but FirstName and LastName concatenated. One option is to create a new type and then create and return
+  instances of that type.
+    Another option, which is to use anonymous types.
+    Anonymous types are essentially compiler-generated types that are not explicitly declared. Anonymous ty-
+  pes typically are used in the select clause of a query expression to return a subset of the properties
+  from each object in the source sequence.
+    An example of anonymous type:
+    // values are of anonymous types
+    var values = list.Select(e => new {
+                                        Identifier = e.Id,
+                                        Name = e.FirstName + " " + e.LastName
+                                      }
+                             );
+   // use the anonymous type 
+   Content = new ObjectContent(values.GetType(), values, Configuration.Formatters.JsonFormatter);
+9 Important point to note that XmlFormatter cannot handle anonymous types.
+10 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
