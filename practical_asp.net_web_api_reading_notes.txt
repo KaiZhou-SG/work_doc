@@ -1,0 +1,8 @@
+Chapter 2 Debugging and Tracing
+
+1 The ability to view HTTP trafic, which consists of the request message sent by the client and the 
+  response message sent by the server in response to the request, is a fundamental requirement for
+  developing HTTP services.
+2 Following the above requirement, equally important is the ability to hand-craft requests, submit them
+  to ASP.NET Web API, and view the corresponding response from ASP.NET Web API.
+3 Web browsers usually come with built-in tools to capture and inspect the HTTP traffic.

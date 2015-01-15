@@ -1,0 +1,25 @@
+  My Understanding of the ASP.NET Web API Framework
+
+  In the era of the Internet, services can be delivered via Internet. HTTP is one set of the Internet pro-
+tocols, it's full name is Hyper Text Transfer Protocol.
+  HTTP does not only transfer data, it also has verbs, which are: Create, Retrieve, Update and Delete. So
+that data can also be created, retrieved, updated and deleted.
+  ASP.NET Web API Framework makes use of those functionalities of the HTTP protocol, and provides a lot of
+wrapper classes for convenience while creating a service or consuming a service via HTTP protocol.
+  ASP.NET Web API Framework has its own structure, the MVC structure, while V(the View) is not heavily used
+and M(the Model) is the place where business objects are placed, and C(the Controller) is the place where
+HTTP requests are matched and dispatched to the M(the business objects), and processed data are returned to
+the HTTP calling party(the HTTP Client).
+  Routing:
+    Routing is to redirect the HTTP requests from HTTP Clients to the correct Actions(in Controller). There
+are two ways to configure such routings so far as I know:
+    a) add the route object to the routeTable object one for each Action in the Controller
+    b) add an route attribute in front of each Action  
+  ASP.NET Web API Http Configuration:
+  Places am I still not so clear:
+    a) How to handle lots of HTTP requests asynchronously
+    b) How to seralize / deseralize objects when passing them back and forth HTTP Requests and Responses
+    c) The common Web API related classes 
+    
+  
+
