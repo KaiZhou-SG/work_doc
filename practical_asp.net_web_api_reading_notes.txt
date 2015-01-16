@@ -1,3 +1,20 @@
+Chapter 1 Building a basic Web API
+1 A web API is just an application programming interface(API) over the web(that is, HTTP). When the resour-
+  ces of an application can be manipulated over HTTP using the standard HTTP methods of GET, POST, PUT, and
+  DELETE, you can say that the application supports a web API for other applications to use.
+2 A central concept of HTTP services is the existence of resources that can be identified through a uniform
+  resource identifier(URI). If you equate resources to nouns, then actions on a resource can be equated to
+  verbs and are represented by the HTTP methods such as GET, POST, PUT, and DELETE.
+3 Attributes:
+  [AcceptVerbs("GET")] or:
+  [HttpGet]
+  indicates that the marked functions are mapped to HttpGet verb.
+  The same applies to:
+  [HttpPut] and so on...
+4 
+
+
+
 Chapter 2 Debugging and Tracing
 
 1 The ability to view HTTP trafic, which consists of the request message sent by the client and the 
@@ -70,7 +87,72 @@ Chapter 3 Media-Type Formatting CLR Objects
 9 Important point to note that XmlFormatter cannot handle anonymous types.
 10 
 
+Chapter 4 Customizing response
 
+1 RFC2616 defines content negotiation as "the process of selecting the best representation for a given
+  reponse when there are multiple representations available".
+  And this is not called format negotiation, because the alternate representations may be of the same
+  media type, but use different capabilities of that type, be in different languages, etc.
+2 The term negotiation is used because the client indicates its preferences.
+3 A client sends a list of options with a quality factor specified against each option, indicating the pre-
+  ference level. It is up to the service, which is Web API in our case, to fullfill the request in the way
+  the client wants, respecting the client preferences.
+4 If Web API cannot fullfill the request the way the clients has requested, it can switch to a default or
+  send a 406-Not Acceptable status code in the reponse.
+5 There are four request headers that play a major part in this process of content negotiation:
+  a) Accept, which is used by a client to indicate the preferences for the media types for the resource r-
+  epresentation in the response, such as JSON(application/json) or XML(application/xml).
+  b) Accept-Charset, which is used by a client to indicate the preferences for the character sets, such as
+  UTF-8 or UTF-16.
+  c) Accept-Encoding, which is used by a client to indicate the preferences for the content encoding, such
+  as gzip or deflate.
+  d) Accept-Language, which is used by a client to indicate the preferences for the language, such as en-us
+  or fr-fr
+6 
+
+Chapter 5 Binding an HTTP request into CLR objects
+
+1 The ASP.NET Web API framework reads each incoming HTTP request and creates the parameter objects for your
+  action methods in the controller.
+2 Understand different types of bindings possible with ASP.NET Web API
+3 The ASP.NET Web API framework reads the route data and the query string of the request URI and sets the
+  parameters of the action methods that are simple types(primitives, DateTime, Guid, and so on)by a process
+  called model binding. The parameters that are complex types are set based on the HTTP request body with
+  the help of the media type formatters that we saw in Chapter 3.
+4 Serialization:
+  translate CLR types into a format that can be transmitted over HTTP(JSON or XML)
+5 Deserialization:
+  translate an HTTP request message into CLR types
+6 A media formatter can enlist itself in serialization and / or deserialization by returning true when the
+  framework calls the CanWrite(Type) and CanReadType(Type) methods respectively.
+7 Reading the raw HTTP request:
+  problems:
+  a) We read the request message content as a string using the ReadAsStringAsync method and take the ID fro-    m the URI, the code is naive.
+  b) It does not handle any of the rainy-day scenarios such as the ID not being a number, ID absent, and so
+    on.
+  c) And also we get the request message content as JSON. We will need to parse this into a CLR object. If
+    a client sends XML, we need to handle that as well. 
+  d) Obviously, it is a lot of painful work.
+8 Reading the HTTP request into a CLR type:
+  a) 
+9 Binding the HTTP request to simple types
+  a) By default, the simple types are bound from the URI path and query String only.
+  b) the [FromBody] attribute indicates that the parameter is passed within the body of the request
+    message instead of the head of it
+  c) notice that when [FromBody] is used, the whole body(of the request message) is bound to that
+    parameter, not a part of the body. So, you cannot have multiple parameters with the [FromBody]
+    attribute in an action method.
+  d) If you need to get multiple parameters from the body, define a new class containging those fie-
+    lds, and make it as the type of the parameter, and apply the [FromBody] attribute to it.
+10 Binding the HTTP request to complex types
+  a) By default, complex types are bound from the request message body and simple types are bound from
+    the URI path and the query string.
+  b) Just as we can bind simple types to the body of the request message by apply the [FromBody] attribute,
+    we can also bind complex types to the head(uri + query string) of the request message by apply the [FromUri] attribute to it.
+11 The body can be read only ONCE
+12 Binding the HTTP request to a collection
+13 Binding the Form data
+  
 
 
 
