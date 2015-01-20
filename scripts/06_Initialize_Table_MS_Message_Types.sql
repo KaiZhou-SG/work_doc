@@ -13,3 +13,5 @@ INSERT INTO MS_Message_Types_Tbl(Msg_Code, Msg_Type_Code,
   ('15', 'REQ', 'MDT request a job') -- it can be requesting any leg
 
   GO
+
+  SELECT * FROM MS_Message_Types_Tbl
