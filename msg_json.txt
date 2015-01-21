@@ -1,0 +1,38 @@
+{
+  "MsgSE1stLegHead": {
+    "msgCode":"10",
+    "msgTypeCode":"COL",
+    "msgTypeDescription":"typeDesc",
+    "msgId":"0",
+    "scheduleDate","2015-01-21",
+    "startTime":"0800",
+    "endTime":"20:00",
+    "primeMover":"pri001",
+    "jobNo":"job001",
+    "jobTripSeqNo":"jobT0010"
+  },
+  "MsgSE1stLegBody":{
+    "Vessel":"vessel01",
+    "Voyage":"voyage01",
+    "BookRefNo":"bookRefNo01",
+     "ShippingLine":"shippingL01",
+    "POD":"pod",
+    "ContainerQty":"1",
+    "ContainerSize":"40",
+    "ContainerType":"40FC",
+    "FromLocation":"SGP",
+    "ToLocation":"Vietnam",
+    "Remark":"No_Remark"
+  }
+}
+
+{
+  "FirstName":"Kai",
+  "LastName":"Zhou",
+  "Id":"4".
+  "CurrentTask": 
+   {
+      "BaskTask":"basic",
+      "AdHocTask":"adhoc"
+    }
+}
