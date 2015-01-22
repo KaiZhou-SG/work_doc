@@ -1,3 +1,11 @@
-1 Convention: the controller name is usually the corresponding model name + Controller. But if it's not,
-  the application still can work, as long as the url mapping is correct.
-2 
+1 since there are a lot of conventions / configurations, pay attentation to the details where there're
+  conventions / configurations or formats; sometimes it's just a small typo
+2 the routing mechanism is not so clever, create route templates that are at least easy to be distinguish 
+  by naked eyes
+3 debuging is so important, be smart, be obserative while gaining the experience
+4 [Route("url")] is much easier than Http Verbs or [ActionName("action")] or any other kind of mapping /
+  routing; I'm curious why nobody even mentioned that.
+  Use Http Verbs are just too restrictive, use ActionName + RouteTemplate is just too trick, it will kill
+  you when you're not experienced, just avoid them, use [Route("url")]
+5 it really needs time to try and summarize before you're comfortable with asp.net web api 2
+6 
