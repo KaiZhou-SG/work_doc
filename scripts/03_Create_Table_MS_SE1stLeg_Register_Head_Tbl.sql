@@ -2,7 +2,7 @@
 -- 
 CREATE TABLE MS_SE1stLeg_Register_Head_Tbl (
   Msg_Id BIGINT NOT NULL,
-  Msg_Code SMALLINT NOT NULL,
+  Msg_Code NVARCHAR(2) NOT NULL,
   Schedule_Date NVARCHAR(10) NOT NULL,
   Start_Time NVARCHAR(4) NOT NULL,
   End_Time NVARCHAR(4) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE MS_SE1stLeg_Register_Head_Tbl (
     pk_MS_SE1stLeg_Register_Header_Tbl PRIMARY KEY (Msg_Id),
   CONSTRAINT
     fk_MS_SE1stLeg_Register_Header_Tbl_MS_Message_Types_Tbl
-	FOREIGN KEY (Msg_Code) REFERENCES  MS_Message_Types_Tbl
+	FOREIGN KEY (Msg_Code) REFERENCES  MS_Message_Types_Tbl(Msg_Code)
 )
 
 GO

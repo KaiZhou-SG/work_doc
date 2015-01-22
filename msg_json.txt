@@ -1,23 +1,23 @@
 {
-  "MsgSE1stLegHead": {
-    "msgCode":"10",
-    "msgTypeCode":"COL",
-    "msgTypeDescription":"typeDesc",
-    "msgId":"0",
-    "scheduleDate","2015-01-21",
-    "startTime":"0800",
-    "endTime":"20:00",
-    "primeMover":"pri001",
-    "jobNo":"job001",
-    "jobTripSeqNo":"jobT0010"
-  },
-  "MsgSE1stLegBody":{
+  "MsgHead": {
+    "Msg_Code":"10",
+    "Msg_Type_Code":"COL",
+    "Msg_Type_Description":"typeDesc",
+    "MsgId":0,
+    "ScheduleDate":"2015-01-21",
+    "StartTime":"0800",
+    "EndTime":"20:00",
+    "PrimeMover":"pri001",
+    "JobNo":"job001",
+    "JobSeqNo":"jobT0010"
+    },
+  "MsgBody":{
     "Vessel":"vessel01",
     "Voyage":"voyage01",
     "BookRefNo":"bookRefNo01",
      "ShippingLine":"shippingL01",
     "POD":"pod",
-    "ContainerQty":"1",
+    "ContainerQty":1,
     "ContainerSize":"40",
     "ContainerType":"40FC",
     "FromLocation":"SGP",
@@ -34,5 +34,59 @@
    {
       "BaskTask":"basic",
       "AdHocTask":"adhoc"
+    }
+}
+
+{
+  "MySeniorStuff":
+  {
+    "_Salary":
+    {
+      "BaseSalary":1.0,
+      "Bonus":2.0
+    }
+    "FirstName":"Kai",
+    "LastName":"Zhou",
+    "ID":10,
+    "CurrentTask":
+    {
+      "BasicTask":"basic",
+      "AdHocTask":"adhoc"
+    }
+  }
+  "MySalary":
+  {
+     "BaseSalary":3.0,
+      "Bonus":4.0
+  }
+}
+
+{
+  "MsgHead":
+  {
+     "MsgId": 10,
+     "msgCode": "10",
+     "msgTypeCode":"COL",
+     "msgDescription":"No_Desc",
+     "ScheduleDate":"2015-01-22",
+     "StartTime":"0800",
+     "EndTime":"2000",
+     "PrimeMover":"PRM001",
+     "JobNo":"Job001",
+     "JobSeqNo":"Trip001"
+  },
+  "MsgBody":
+  {
+      "strVessel":"vessel001",
+       "strVoyage":"voyage001",
+       "strBookRefNo":"bkrefNo",
+       "strShippingLine":"shippingLine001",
+        "strPod":"China",
+        "nContainerQty":1,
+        "strContainerSize":"20",
+        "strContainerType":"20HC",
+        "strFromLocation":"CN",
+        "strToLocation":"SGN",
+         "strRemark":"Remark"
     }
 }
