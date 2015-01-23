@@ -12,6 +12,7 @@ namespace MS_Simulator.Models
     /// An abstract class, representing a general message, consisting of MessageHead
     /// and MessageBody
     /// </summary>
+    [Serializable()]
     public class Message
     {
         #region "Fields"

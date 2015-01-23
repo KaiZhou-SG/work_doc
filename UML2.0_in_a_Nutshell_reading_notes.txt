@@ -1,0 +1,18 @@
+Overview:
+1 Modeling languages are used to specify, visualize, construct, and document systems.
+2 UML has become the standard method for modeling software systems.
+3 UML has a strict terminology for just about every aspect of modeling. This is necessary to reduce
+  ambiguity and confusion as much as possible.
+  However, in everyday use some terms are used interchangeably with others that have completely different
+  meanings in UML. A classic example of this is operation and method.
+4 Static modeling captures the physical structur of a piece of software:
+  >> Class diagrams
+  >> Package diagrams
+  >> Composite structures
+  >> Component diagrams
+  >> Deployment diagrams
+  >> Use case diagrams
+  >> Statechart diagrams
+  >> Activity diagrams
+  >> Interaction diagrams
+  >> 

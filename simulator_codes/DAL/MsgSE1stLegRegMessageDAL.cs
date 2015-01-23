@@ -49,11 +49,12 @@ namespace MS_Simulator.DAL
             long msgId = MessageDAL.GetNextMessageId(msgHead.MsgType.Msg_Type_Code);
             String strDbCon = FMGlobalSettings.TheInstance.getConnectionString();
 
-            String strQuery = "INSERT INTO MS_SE1stLeg_Register_Head_Tbl(" +
+            String strQuery = "INSERT INTO MS_SE1stLeg_Register_Head_Tbl" +
                 "(Msg_Id, Msg_Code, Schedule_Date, Start_Time, End_Time, " +
                 "Prime_Mover, Job_Number, Job_Trip_SeqNo) VALUES " +
                 "({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')";
-            strQuery = String.Format(strQuery, msgId, msgHead.MsgType.Msg_Type_Code,
+            strQuery = String.Format(strQuery, msgId, msgHead.MsgType.Msg_Code,
+                msgHead.ScheduleDate,
                 msgHead.StartTime, msgHead.EndTime, msgHead.PrimeMover, 
                 msgHead.JobNo, msgHead.JobSeqNo);
             try
@@ -79,15 +80,16 @@ namespace MS_Simulator.DAL
             bool rtn = false;
             String strDbCon = FMGlobalSettings.TheInstance.getConnectionString();
 
-            String strQuery = "INSERT INTO MS_SE1stLeg_Register_Body_Tbl(" +
+            String strQuery = "INSERT INTO MS_SE1stLeg_Register_Body_Tbl " +
                 "(Msg_Id, Vessel, Voyage, BookRefNo, ShippingLine, " +
                 "POD, Container_Qty, Container_Size, Container_Type, " +
-                " ) VALUES " +
-                "({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', " +
+                " From_Location, To_Location, Remark) VALUES " +
+                "({0}, '{1}', '{2}', '{3}', '{4}', '{5}', {6}, '{7}', " +
                 " '{8}', '{9}', '{10}', '{11}')";
             strQuery = String.Format(strQuery, msgId, msgBody.Vessel, msgBody.Voyage,
                 msgBody.BookRefNo, msgBody.ShippingLine, msgBody.POD, 
-                msgBody.ContainerQty, msgBody.ContainerSize, msgBody.FromLocation,
+                msgBody.ContainerQty, msgBody.ContainerSize,
+                msgBody.ContainerType, msgBody.FromLocation,
                 msgBody.ToLocation, msgBody.Remark);
             try
             {

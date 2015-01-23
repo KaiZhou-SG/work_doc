@@ -5,6 +5,10 @@ using System.Web;
 //
 using FM.FMSystem.BLL;
 using MS_Simulator.DAL;
+//
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MS_Simulator.Models
 {
@@ -12,6 +16,7 @@ namespace MS_Simulator.Models
     /// TheMessage.cs
     /// The registering message for the Sea-Export 1st Leg, including head and body
     /// </summary>
+    [Serializable()]
     public class TheMessage : Message
     {
         #region "Fields"
@@ -62,7 +67,6 @@ namespace MS_Simulator.Models
         {
             this.msgHead = msgHeader;
             this.msgBody = msgBody;
-
         }
 
         #endregion

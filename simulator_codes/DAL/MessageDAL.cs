@@ -44,7 +44,8 @@ namespace MS_Simulator.DAL
                     // SE 1st Leg
                     strQuery = "SELECT MAX(Msg_Id) FROM MS_SE1stLeg_Register_Head_Tbl";
                     SqlCommand dbCmd = new SqlCommand(strQuery, dbCon);
-                    lMaximumMsgId = Convert.ToInt32(dbCmd.ExecuteScalar());
+                    lMaximumMsgId = dbCmd.ExecuteScalar() == DBNull.Value ? 0 :
+                        Convert.ToInt32(dbCmd.ExecuteScalar());
                 }
                 catch (InvalidOperationException ioe) { throw new FMException(ioe.Message); }
                 catch (InvalidCastException ice) { throw new FMException(ice.Message); }
@@ -69,7 +70,8 @@ namespace MS_Simulator.DAL
                     // SE 1st Leg
                     strQuery = "SELECT MAX(Msg_Id) FROM MS_SE2ndLeg_Register_Head_Tbl";
                     SqlCommand dbCmd = new SqlCommand(strQuery, dbCon);
-                    lMaximumMsgId = Convert.ToInt32(dbCmd.ExecuteScalar());
+                    lMaximumMsgId = dbCmd.ExecuteScalar() == DBNull.Value ? 0 :
+                        Convert.ToInt32(dbCmd.ExecuteScalar());
                 }
                 catch (InvalidOperationException ioe) { throw new FMException(ioe.Message); }
                 catch (InvalidCastException ice) { throw new FMException(ice.Message); }

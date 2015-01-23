@@ -5,6 +5,7 @@ using System.Web;
 
 namespace MS_Simulator.Models
 {
+    [Serializable()]
     public class MessageBody
     {
         public virtual bool GeneralSelfCheck()

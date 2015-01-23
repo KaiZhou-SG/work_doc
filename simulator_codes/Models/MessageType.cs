@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 namespace MS_Simulator.Models
 {
+    [Serializable()]
     public class MessageType
     {
         #region "Fields"
@@ -15,19 +16,19 @@ namespace MS_Simulator.Models
         private String strMsg_Type_Code;
         private String strMsg_Type_Description;
 
-        public String Msg_Code
+        public string Msg_Code
         {
             get { return strMsg_Code; }
             set { strMsg_Code = value; }
         }
 
-        public String Msg_Type_Code
+        public string Msg_Type_Code
         {
             get { return strMsg_Type_Code; }
             set { strMsg_Type_Code = value; }
         }
 
-        public String Msg_Type_Description
+        public string Msg_Type_Description
         {
             get { return strMsg_Type_Description; }
             set { strMsg_Type_Description = value; }

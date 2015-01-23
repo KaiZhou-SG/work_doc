@@ -39,10 +39,23 @@ namespace MS_Simulator.Controllers
 
         }
 
+        #region "For testing only"
+
+        [HttpGet]
         [ActionName("EnvironmentTesting")]
         public String Test(String str)
         {
             return str;
         }
+
+        [HttpGet]
+        [ActionName("GetMessageID")]
+        // the default action
+        public int GetMessage(int id)
+        {
+            return id;
+        }
+
+        #endregion
     }
 }

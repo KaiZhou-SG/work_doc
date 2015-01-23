@@ -9,6 +9,7 @@ namespace MS_Simulator.Models
     /// MsgSE1stLegHead.cs
     /// represents the header of the Sea-Export 1st registering message: head of Msg1
     /// </summary>
+    [Serializable()]
     public class MsgSE1stLegHead : CommonHead
     {
         #region "Fields"
@@ -17,7 +18,6 @@ namespace MS_Simulator.Models
         #endregion
 
         #region "Functions"
-        // no new functions so far
 
         #endregion
 
@@ -30,6 +30,17 @@ namespace MS_Simulator.Models
         public MsgSE1stLegHead(int msgId, MessageType msgType, String scheduleDate,
             String startTime, String endTime, String primeMover, String jobNo,
             String jobTripSeqNo) : base(msgId, msgType, scheduleDate, startTime, endTime,
+                primeMover, jobNo, jobTripSeqNo)
+        {
+            // no extra fields needed to be initialized
+
+        }
+
+        public MsgSE1stLegHead(int msgId, string msgCode, string msgTypeCode,
+            string msgDescription, String scheduleDate,
+            String startTime, String endTime, String primeMover, String jobNo,
+            String jobTripSeqNo) : base(msgId, msgCode, msgTypeCode,
+                msgDescription, scheduleDate, startTime, endTime,
                 primeMover, jobNo, jobTripSeqNo)
         {
             // no extra fields needed to be initialized

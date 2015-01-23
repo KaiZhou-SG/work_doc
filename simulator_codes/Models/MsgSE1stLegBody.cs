@@ -9,6 +9,7 @@ namespace MS_Simulator.Models
     /// MsgSE1stLegBody.cs
     /// the body of the Sea-Export 1st Leg registering message body: body of Msg1
     /// </summary>
+    [Serializable()]
     public class MsgSE1stLegBody : MessageBody
     {
         #region "Fields"
@@ -31,8 +32,8 @@ namespace MS_Simulator.Models
         }
         public String Voyage
         {
-            get { return strVessel; }
-            set { strVessel = value; }
+            get { return strVoyage; }
+            set { strVoyage = value; }
         }
 
         public String BookRefNo

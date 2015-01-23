@@ -9,6 +9,7 @@ namespace MS_Simulator.Models
     /// CommonHead.cs
     /// The common message header.
     /// </summary>
+    [Serializable()]
     public class CommonHead : MessageHead
     {
         #region "Fields"
@@ -20,36 +21,36 @@ namespace MS_Simulator.Models
         private String strJobNo;
         private String strSeqNo;
 
-        public String ScheduleDate
+        public string ScheduleDate
         {
             get { return strScheduleDate; }
             set { strScheduleDate = value; }
         }
-        public String StartTime
+        public string StartTime
         {
             get { return strStartTime; }
             set { strStartTime = value; }
         }
 
-        public String EndTime
+        public string EndTime
         {
             get { return strEndTime; }
             set { strEndTime = value; }
         }
 
-        public String PrimeMover
+        public string PrimeMover
         {
             get { return strPrimeMover; }
             set { strPrimeMover = value; }
         }
 
-        public String JobNo
+        public string JobNo
         {
             get { return strJobNo; }
             set { strJobNo = value; }
         }
 
-        public String JobSeqNo
+        public string JobSeqNo
         {
             get { return strJobNo; }
             set { strJobNo = value; }
@@ -79,9 +80,9 @@ namespace MS_Simulator.Models
 
         }
 
-        public CommonHead(int msgId, MessageType msgType, String strScheduleDate, 
-            String strStartTime, String strEndTime, String strPrimeMover, 
-            String strJobNo, String strSeqNo) : base(msgId, msgType)
+        public CommonHead(int msgId, MessageType msgType, string strScheduleDate, 
+            string strStartTime, string strEndTime, string strPrimeMover, 
+            string strJobNo, string strSeqNo) : base(msgId, msgType)
         {
             this.strScheduleDate = strScheduleDate;
             this.strStartTime = strStartTime;
@@ -89,7 +90,6 @@ namespace MS_Simulator.Models
             this.strPrimeMover = strPrimeMover;
             this.strJobNo = strJobNo;
             this.strSeqNo = strSeqNo;
-
         }
 
         public CommonHead(int msgId, String strMsgCode, String strMsgTypeCode, 
@@ -98,12 +98,13 @@ namespace MS_Simulator.Models
             String strJobNo, String strSeqNo) : 
                 base(msgId, strMsgCode, strMsgTypeCode, strMsgTypeDescription)
         {
-            MessageType msgType = new MessageType(strMsgCode, strMsgTypeCode,
-                strMsgTypeDescription);
+            this.strScheduleDate = strScheduleDate;
+            this.strStartTime = strStartTime;
+            this.strEndTime = strEndTime;
+            this.strPrimeMover = strPrimeMover;
+            this.strJobNo = strJobNo;
+            this.strSeqNo = strSeqNo;
 
-            new CommonHead(msgId, msgType, strScheduleDate, strStartTime, strEndTime,
-                strPrimeMover, strJobNo, strSeqNo);
-            
         }
 
         #endregion

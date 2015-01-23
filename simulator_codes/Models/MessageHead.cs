@@ -5,6 +5,7 @@ using System.Web;
 
 namespace MS_Simulator.Models
 {
+    [Serializable()]
     public class MessageHead
     {
         #region "Fields"
@@ -54,20 +55,18 @@ namespace MS_Simulator.Models
             this.msgType = new MessageType();
         }
 
-        public MessageHead(long msgId, String msgCode, String msgTypeCode,
-            String msgTypeDescription)
+        public MessageHead(long msgId, string msgCode, string msgTypeCode,
+            string msgTypeDescription)
         {
             this.msgId = msgId;
-            MessageType msgType = new MessageType(msgCode,
+            this.msgType = new MessageType(msgCode,
                 msgTypeCode, msgTypeDescription);
-
-            this.MsgType = msgType;
         }
 
         public MessageHead(long msgId, MessageType msgType)
         {
             this.msgId = msgId;
-            this.MsgType = msgType;
+            this.msgType = msgType;
         }
 
         #endregion
