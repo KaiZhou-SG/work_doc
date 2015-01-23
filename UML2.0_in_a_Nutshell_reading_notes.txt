@@ -5,14 +5,77 @@ Overview:
   ambiguity and confusion as much as possible.
   However, in everyday use some terms are used interchangeably with others that have completely different
   meanings in UML. A classic example of this is operation and method.
-4 Static modeling captures the physical structur of a piece of software:
-  >> Class diagrams
-  >> Package diagrams
-  >> Composite structures
-  >> Component diagrams
-  >> Deployment diagrams
-  >> Use case diagrams
-  >> Statechart diagrams
-  >> Activity diagrams
-  >> Interaction diagrams
-  >> 
+4 Static modeling captures the physical structur of a piece of software
+
+Chapter 1 Fundamentals of UML
+1 For a developer: Class diagram --> Sequence diagram
+2 For a process person: Activity diagram
+3 UML basics
+  3.1 First and formost, it is important to understand that UML is a language, this means it has both
+    syntax and semantics.
+  3.2 UML is applied where:
+    >> Designing software
+    >> Communicating software or business processes
+    >> Capturing details about a system for requirements or analysis
+    >> Documenting an existing system, process, or organization
+  3.3 The basic building block of UML is a diagram.
+  3.4 It is important to realize the UML is NOT a software process. It is meant to be used within a
+    software process and has facets clearly intended to be part of an iterative development.
+  3.5 Business process modeling:
+    >> To capture behavior and process flow:
+      a) Activity diagrams
+      b) Statecharts
+  3.6 It is important to realize that while the specification is the definitive source of the formal
+    definition of UML, it is by no means the be-all and end-all of UML. UML is designed to be extended
+    and interpreted depending on the domain, user, and specific application.
+  3.7 However, you must be carefull when using nonstandard notation representation when collaborating
+    with other users.
+  3.8 Users new to UML can fall into the trap of trying to model everything about their system within
+    a single diagram and end up missing critical information; or they may try to incorporate every
+    possible UML diagram into their model, thereby overcomplicating things and creating a maintenance
+    nightmare.
+  3.9 Becoming proficient with UML means understanding what each diagram has to offer and knowing when
+    to apply it. There will be many times when a concept could be expressed using any number of diagrams;
+    pick the one(s) that will mean the most to your users.
+  3.10 UML profiles: in addition to a variety of diagram types, UML is designed to be extended, you can
+    informally extend UML by adding constraints, stereotypes, tagged values, and notes to your models,
+    or you can use the formal UML extension and define a full UML profile.
+  3.11 Modeling, is a means to capture ideas, relationships, decisions, and requirements in a well-defi-
+    ned notation that can be applied to many different domains. Modeling not only means different things
+    to different people, but also it can use different pieces of UML depending on what you are trying
+    to convey.
+  3.12 UML 2.0 divides diagrams into two categories: structural diagrams and behavioral diagrams:
+    >> Structural diagrams are used to capture the physical organization of the things in your systems.
+      > Class diagrams: classes and interfaces and the static relationships between them
+      > Component diagrams: show the organization and dependencies involved in the implementation of a 
+        system. They can group smaller elements, such as classes, into larger, deployable pieces.
+      > Composite structure diagrams: as system become more complex, the relationships between elements
+        grow in complexity, composite structure diagrams link class diagrams and component diagrams;
+        Composite structure diagrams show how elements in the system combine to realize complex patterns.
+      > Deployment diagrams: show how your system is actually executed and assigned to various pieces of 
+        hardware.
+      > Package diagrams: special types of class diagrams. They use the same notation as class diagrams
+        but their focus is on how classes and interfaces are grouped together.
+      > Object diagrams: use the same syntax as class diagrams and show how actual instances of classes
+        are related at a specific instance of time. It's a snapshot of the relationships in your system
+        at runtime.
+    >> Behavioral diagrams focus on the behavior of elements in a system:
+      > Activity diagrams
+      > Communication diagrams
+      > Interaction overview diagrams
+      > Sequence diagrams
+      > State machine diagrams
+      > Timing diagrams
+      > Use case diagrams
+
+Chatper 2 Class diagrams
+1 Class diagrams capture the static relationships of your software; in other words, how things are put
+  together.
+2 When writing software you are constantly making design decisions: what classes hold references to o-
+  ther classes, which class "owns" some other class, and so on. Class diagrams provide a way to captu-
+  re this "physical" structure of a system.
+3 You can hide any compartment of the class if that increases the readability of your diagram. When r-
+  eading a diagram, you can make no assumptions about a missing compartment; it doesn't mean it is em-
+  pty. You may add compartments to a class to show additional information, such as exceptions or events,
+  though this is outside of the typical notation.
+4 
