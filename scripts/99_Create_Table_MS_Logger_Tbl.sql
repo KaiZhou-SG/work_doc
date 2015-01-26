@@ -9,6 +9,7 @@ CREATE TABLE MS_Logger_Tbl (
   Received_By NVARCHAR(10) NOT NULL,
 
   CONSTRAINT pk_ms_logger PRIMARY KEY (Msg_Code, Msg_Id)
+  -- no foreign key here
 )
 
 GO

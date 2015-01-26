@@ -1,9 +1,8 @@
---DROP TABLE MS_SE2ndBody_Tbl
+--DROP TABLE MS_SE1stBody_Tbl
 --GO
 
-CREATE TABLE MS_SE2ndBody_Tbl (
+CREATE TABLE MS_SE1stBody_Tbl (
   Msg_Id BIGINT NOT NULL,
-  Msg_Code NVARCHAR(2) NOT NULL, -- this column with Msg_Id together formed the primary key and foreign key
   Schedule_Date NVARCHAR(10) NOT NULL,
   Trip_Start_Time NVARCHAR(4) NOT NULL,
   Trip_End_Time NVARCHAR(4) NOT NULL,
@@ -20,8 +19,8 @@ CREATE TABLE MS_SE2ndBody_Tbl (
   To_Location NVARCHAR(12) NOT NULL,
   Remark NVARCHAR(30) NULL,
 
-  CONSTRAINT pk_se2ndbody PRIMARY KEY (Msg_Id, Msg_Code),
-  CONSTRAINT fk_se2ndbody_se1sthead FOREIGN KEY (Msg_Id, Msg_Code) 
-    REFERENCES MS_SE2ndHead_Tbl(Msg_Id, Msg_Code)
+  CONSTRAINT pk_se1stbody PRIMARY KEY (Msg_Id),
+  CONSTRAINT fk_se1stbody_se1sthead FOREIGN KEY (Msg_Id) 
+    REFERENCES MS_SE1stHead_Tbl(Msg_Id)
 )
 GO
