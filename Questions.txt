@@ -1,1 +1,14 @@
 1 Why do we have to register jobs to Growth_Venture? They don't do the planning, we do.
+2 Is message code and message type code one to one, or the message type code
+  optional only? I think it's better that every message has a message type c-
+  ode, and it's one to one to the message code.
+3 In double mounting scenarios, do we separate two container numbers into two
+  fields or concate them with a separator?(the same question applies to cont-
+  ainer seal numbers)
+4 what is the do number?(already answered, it's a delivery receipe, a confir-
+  mation number of goods delivered)
+5 we still need extra messages for trip status changing. e.g. The driver will
+  send a "Done" message saying that his / her current  trip is done
+6 the TM side will confirm that "Done" message and go ahead to change the tr-
+  ip status on the schedule control
+7 
