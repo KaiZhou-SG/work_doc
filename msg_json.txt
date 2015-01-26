@@ -1,92 +1,31 @@
+SE-1st
 {
-  "MsgHead": {
-    "Msg_Code":"10",
-    "Msg_Type_Code":"COL",
-    "Msg_Type_Description":"typeDesc",
-    "MsgId":0,
-    "ScheduleDate":"2015-01-21",
-    "StartTime":"0800",
-    "EndTime":"20:00",
-    "PrimeMover":"pri001",
-    "JobNo":"job001",
-    "JobSeqNo":"jobT0010"
-    },
-  "MsgBody":{
-    "Vessel":"vessel01",
-    "Voyage":"voyage01",
-    "BookRefNo":"bookRefNo01",
-     "ShippingLine":"shippingL01",
-    "POD":"pod",
-    "ContainerQty":1,
-    "ContainerSize":"40",
-    "ContainerType":"40FC",
-    "FromLocation":"SGP",
-    "ToLocation":"Vietnam",
-    "Remark":"No_Remark"
-  }
-}
-
-{
-  "FirstName":"Kai",
-  "LastName":"Zhou",
-  "Id":"4".
-  "CurrentTask": 
-   {
-      "BaskTask":"basic",
-      "AdHocTask":"adhoc"
-    }
-}
-
-{
-  "MySeniorStuff":
+  "head":
   {
-    "_Salary":
-    {
-      "BaseSalary":1.0,
-      "Bonus":2.0
-    }
-    "FirstName":"Kai",
-    "LastName":"Zhou",
-    "ID":10,
-    "CurrentTask":
-    {
-      "BasicTask":"basic",
-      "AdHocTask":"adhoc"
-    }
-  }
-  "MySalary":
-  {
-     "BaseSalary":3.0,
-      "Bonus":4.0
-  }
-}
-
-{
-  "MsgHead":
-  {
-     "MsgId": 10,
-     "msgCode": "10",
-     "msgTypeCode":"COL",
-     "msgDescription":"No_Desc",
-     "ScheduleDate":"2015-01-22",
-     "StartTime":"0800",
-     "EndTime":"2000",
-     "PrimeMover":"PRM001",
-     "JobNo":"Job001",
-     "JobSeqNo":"Trip001"
+    "msgId":9,
+    "msgCode":"10",
+    "primeMover":"primeMover001",
+    "jobNo":"jobNo001",
+    "tripSeqNo":"jobTrip001"
   },
-  "MsgBody":
+  "body":
   {
-      "strVessel":"vessel001",
-       "strVoyage":"voyage001",
-       "strBookRefNo":"bkrefNo",
-       "strShippingLine":"shippingLine001",
-        "strPod":"China",
-        "nContainerQty":1,
-        "strContainerSize":"20",
-        "strContainerType":"20HC",
-        "strFromLocation":"CN",
-        "strToLocation":"SGN",
-         "strRemark":"Remark"
-    }
+    "msgId":9,
+    "scheduleDate":"2015-01-26",
+    "startTime":"0900",
+    "endTime":"2000",
+    "msyTypeCode":"COL",
+    "vessel":"vessel01",
+    "voyage":"voyage01",
+    "bookRefNo":"bookrefno001",
+    "shippingLine":"shippingLine001",
+    "pod":"Singapore",
+    "containerQty":1,
+    "containerSize":"20",
+    "containerType":"20FC",
+    "fromLocation":"China",
+    "toLocation":"Singapore",
+    "remark":"Nope"
+  }
 }
+

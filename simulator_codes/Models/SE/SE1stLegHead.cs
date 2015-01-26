@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+//
+using MS_Simulator.Models.Basement;
 
-namespace MS_Simulator.Models
+namespace MS_Simulator.Models.SE
 {
     /// <summary>
     /// SE1stLegHead.cs
     /// The message head of the registering message of the sea-export 1st leg.
     /// </summary>
-    public class SE1stLegHead : MessageHead
+    public class SE1stLegHead : MessageHead, ISelfCheckable
     {
         #region "Fields"
 

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MS_Simulator.Models
+namespace MS_Simulator.Models.Basement
 {
     /// <summary>
     /// MessageHead.cs
     /// The common message head, inherited by a few other message heads
     /// </summary>
-    public class MessageHead
+    public class MessageHead : ISelfCheckable
     {
         #region "Fields"
         private long msgId;
@@ -49,7 +49,6 @@ namespace MS_Simulator.Models
         #region "Functions"
         public bool SelfCheck()
         {
-            // rules to be added:
 
             return true;
         }

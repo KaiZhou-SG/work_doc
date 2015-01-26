@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MS_Simulator.Models
+namespace MS_Simulator.Models.Basement
 {
     /// <summary>
     /// SecondLegBody.cs

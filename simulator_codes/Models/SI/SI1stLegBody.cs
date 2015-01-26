@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+//
+using MS_Simulator.Models.Basement;
 
-namespace MS_Simulator.Models
+namespace MS_Simulator.Models.SI
 {
-    public class SI1stLegBody : FirstLegBody
+    public class SI1stLegBody : FirstLegBody, ISelfCheckable
     {
         #region "Fields"
 

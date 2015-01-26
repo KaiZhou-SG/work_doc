@@ -6,32 +6,33 @@ using System.Web;
 using MS_Simulator.DAL;
 using System.Data.SqlClient;
 
-namespace MS_Simulator.Models
+namespace MS_Simulator.Models.Basement
 {
     [Serializable()]
     public class MessageType
     {
         #region "Fields"
-        private String strMsg_Code;
-        private String strMsg_Type_Code;
-        private String strMsg_Type_Description;
+        private String msg_Code;
+        private String msg_Type_Code;
+        private String msg_Type_Description;
+        public static Dictionary<string, string> MSG_CODE_TO_TYPE_CODE;
 
         public string Msg_Code
         {
-            get { return strMsg_Code; }
-            set { strMsg_Code = value; }
+            get { return msg_Code; }
+            set { msg_Code = value; }
         }
 
         public string Msg_Type_Code
         {
-            get { return strMsg_Type_Code; }
-            set { strMsg_Type_Code = value; }
+            get { return msg_Type_Code; }
+            set { msg_Type_Code = value; }
         }
 
         public string Msg_Type_Description
         {
-            get { return strMsg_Type_Description; }
-            set { strMsg_Type_Description = value; }
+            get { return msg_Type_Description; }
+            set { msg_Type_Description = value; }
         }
 
         #endregion
@@ -48,23 +49,30 @@ namespace MS_Simulator.Models
             return MessageTypeDAL.AddMessageType(msgType, dbCon, dbTran);
         }
 
+        public static void IniMessageCodeToTypeCodeMapping()
+        {
+            MessageTypeDAL.IniMessageCodeToTypeCodeMapping();
+
+            return;
+        }
+
         #endregion
 
         #region "Constructors"
         public MessageType()
         {
-            this.strMsg_Code = "00";
-            this.strMsg_Type_Code = "Default_Msg_Type";
-            this.strMsg_Type_Description = "Default_Description";
+            this.msg_Code = "00";
+            this.msg_Type_Code = "Default_Msg_Type";
+            this.msg_Type_Description = "Default_Description";
 
         }
 
         public MessageType(String msgCode, String msgTypeCode,
             String msgTypeDescription)
         {
-            this.strMsg_Code = msgCode;
-            this.strMsg_Type_Code = msgTypeCode;
-            this.strMsg_Type_Description = msgTypeDescription;
+            this.msg_Code = msgCode;
+            this.msg_Type_Code = msgTypeCode;
+            this.msg_Type_Description = msgTypeDescription;
 
         }
 

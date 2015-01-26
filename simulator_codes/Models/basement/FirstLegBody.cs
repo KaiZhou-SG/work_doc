@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MS_Simulator.Models
+namespace MS_Simulator.Models.Basement
 {
     /// <summary>
     /// FirstLegBody.cs
     /// The message body of the 1st leg, for either SE or SI
     /// </summary>
-    public class FirstLegBody
+    public class FirstLegBody : ISelfCheckable
     {
         #region "Fields"
         private long msgId;
@@ -123,7 +123,7 @@ namespace MS_Simulator.Models
         #region "Functions"
         public virtual bool SelfCheck()
         {
-            // add rules here:
+            
 
             return true;
         }

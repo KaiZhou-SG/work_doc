@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 //
-using MS_Simulator.Models;
 using FM.FMSystem.BLL;
 using FM.FMSystem.DAL;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using MS_Simulator.Models.Basement;
 
 namespace MS_Simulator.DAL
 {
@@ -67,6 +67,52 @@ namespace MS_Simulator.DAL
             catch (Exception e) { throw new FMException(e.Message); }
 
             return new MessageType();
+        }
+
+        // initialize the message code to message type code mapping
+        public static void IniMessageCodeToTypeCodeMapping()
+        {
+            string strDbCon = FMGlobalSettings.TheInstance.getConnectionString();
+            using (SqlConnection dbCon = new SqlConnection(strDbCon))
+            {
+                try
+                {
+                    if (dbCon.State == ConnectionState.Closed) { dbCon.Open(); }
+                    SqlTransaction dbTran = dbCon.BeginTransaction();
+                    IniMessageCodeToTypeCodeMapping(dbCon, dbTran);
+                }
+                catch (InvalidOperationException ioe) { throw new FMException(ioe.Message); }
+                catch (Exception e) { throw new FMException(e.Message); }
+            }
+        }
+
+        public static void IniMessageCodeToTypeCodeMapping(SqlConnection dbCon, SqlTransaction dbTran)
+        {
+            string sqlQuery = "SELECT * FROM MS_Message_Types_Tbl";
+            try
+            {
+                using (SqlCommand dbCmd = new SqlCommand(sqlQuery, dbCon))
+                {
+                    dbCmd.Transaction = dbTran;
+                    SqlDataReader dbReader = dbCmd.ExecuteReader();
+                    int nCount = 0;
+                    while (dbReader.Read())
+                    {
+                        MessageType.MSG_CODE_TO_TYPE_CODE.Add(
+                            Convert.ToString(dbReader["Msg_Code"]),
+                            Convert.ToString(dbReader["Msg_Type,Code"]));
+                        nCount++;
+                    }
+
+                    if (nCount == 0) throw new FMException("Please initialize the " +
+                        "MS_Message_Types_Tbl first.");
+                }
+            }
+            catch (InvalidOperationException ioe) { throw new FMException(ioe.Message); }
+            catch (InvalidCastException ice) { throw new FMException(ice.Message); }
+            catch (SqlException se) { throw new FMException(se.Message); }
+            catch (ConfigurationException ce) { throw new FMException(ce.Message); }
+            catch (Exception e) { throw new FMException(e.Message); }
         }
 
         #endregion

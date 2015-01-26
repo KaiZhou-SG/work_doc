@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+//
+using MS_Simulator.Models.Basement;
 
 namespace MS_Simulator.Models.SE
 {
-    public class SE2ndLeg
+    public class SE2ndLeg : ISelfCheckable
     {
         #region "Fields"
         private SE2ndLegHead head;

@@ -9,6 +9,7 @@ using FM.FMSystem.DAL;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using MS_Simulator.Models.Basement;
 
 namespace MS_Simulator.DAL
 {

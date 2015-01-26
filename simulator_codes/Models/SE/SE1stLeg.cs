@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+//
+using MS_Simulator.Models.Basement;
+using FM.FMSystem.BLL;
 
 namespace MS_Simulator.Models.SE
 {
-    public class SE1stLeg
+    public class SE1stLeg : ISelfCheckable
     {
         #region "Fields"
         private SE1stLegHead head;
@@ -26,7 +29,15 @@ namespace MS_Simulator.Models.SE
         #region "Functions"
         public bool SelfCheck()
         {
-            // add rules here
+            // check if the message code corresponds to the correct message type code:
+            if (MessageType.MSG_CODE_TO_TYPE_CODE[this.Head.MsgCode] !=
+                this.Body.MsgTypeCode)
+            {
+                throw new FM.FMSystem.BLL.FMException("Message code " +
+                    "does not match to message type code. " +
+                    "MessageId: " + this.Head.MsgId + " Message type code: " + 
+                    this.Body.MsgTypeCode);
+            }
 
             return true;
         }
@@ -43,6 +54,10 @@ namespace MS_Simulator.Models.SE
         {
             this.head = head;
             this.body = body;
+
+            // do a self check first
+            SelfCheck();
+  
         }
 
         #endregion

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MS_Simulator.Models.Basement;
 
-namespace MS_Simulator.Models
+namespace MS_Simulator.Models.SI
 {
-    public class SI2ndLegHead : MessageHead
+    public class SI2ndLegHead : MessageHead, ISelfCheckable
     {
         #region "Fields"
 

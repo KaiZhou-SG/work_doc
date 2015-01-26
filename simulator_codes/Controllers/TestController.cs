@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 //
-using MS_Simulator.Models;
+using MS_Simulator.Models.Test;
 
 namespace MS_Simulator.Controllers
 {

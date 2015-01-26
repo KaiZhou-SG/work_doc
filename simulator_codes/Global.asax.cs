@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Routing;
 //
 using FM.FMSystem.DAL;
+using MS_Simulator.Models.Basement;
 
 namespace MS_Simulator
 {
@@ -20,7 +21,11 @@ namespace MS_Simulator
                 "ipl", "support" }
                 );
 
+            // initialize the message code to message type code mapping
+            MessageType.IniMessageCodeToTypeCodeMapping();
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
 
         }
     }
