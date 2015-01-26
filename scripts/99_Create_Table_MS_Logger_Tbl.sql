@@ -1,3 +1,6 @@
+DROP TABLE MS_Logger_Tbl
+GO
+
 CREATE TABLE MS_Logger_Tbl (
   Msg_Code NVARCHAR(2) NOT NULL,
   Msg_Id BIGINT NOT NULL,

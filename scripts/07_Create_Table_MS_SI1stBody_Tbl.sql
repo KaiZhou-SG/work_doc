@@ -3,10 +3,11 @@
 
 CREATE TABLE MS_SE1stBody_Tbl (
   Msg_Id BIGINT NOT NULL,
+  Msg_Code NVARCHAR(2) NOT NULL,
   Schedule_Date NVARCHAR(10) NOT NULL,
   Trip_Start_Time NVARCHAR(4) NOT NULL,
   Trip_End_Time NVARCHAR(4) NOT NULL,
-  Msg_Type_Code NVARCHAR(3) NOT NULL,
+  -- Msg_Type_Code NVARCHAR(3) NOT NULL,
   Vessel NVARCHAR(30) NOT NULL,
   Voyage NVARCHAR(30) NOT NULL,
   Book_Ref_No NVARCHAR(20) NOT NULL,
@@ -19,8 +20,8 @@ CREATE TABLE MS_SE1stBody_Tbl (
   To_Location NVARCHAR(12) NOT NULL,
   Remark NVARCHAR(30) NULL,
 
-  CONSTRAINT pk_se1stbody PRIMARY KEY (Msg_Id),
-  CONSTRAINT fk_se1stbody_se1sthead FOREIGN KEY (Msg_Id) 
-    REFERENCES MS_SE1stHead_Tbl(Msg_Id)
+  CONSTRAINT pk_se1stbody PRIMARY KEY (Msg_Id, Msg_Code),
+  CONSTRAINT fk_se1stbody_se1sthead FOREIGN KEY (Msg_Id, Msg_Code) 
+    REFERENCES MS_SE1stHead_Tbl(Msg_Id, Msg_Code)
 )
 GO
