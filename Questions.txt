@@ -11,4 +11,8 @@
   send a "Done" message saying that his / her current  trip is done
 6 the TM side will confirm that "Done" message and go ahead to change the tr-
   ip status on the schedule control
-7 
+7 When registering trips from TM to GV, I think we need to incorporate the 
+  container number / seal number in the messages. For example, Sea-Export se-
+  cond leg or Sea-Import 1st leg, so that the driver knows which container(s)
+  to take.
+8
