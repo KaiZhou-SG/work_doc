@@ -78,4 +78,34 @@ Chatper 2 Class diagrams
   eading a diagram, you can make no assumptions about a missing compartment; it doesn't mean it is em-
   pty. You may add compartments to a class to show additional information, such as exceptions or events,
   though this is outside of the typical notation.
-4 
+4 Attributes:
+  1) two different notations to show an attribute
+    1.1) inlined
+    1.2) relationships between classes
+  2) notation is available to show such things:
+    2.1) multiplicity
+    2.2) uniqueness
+    2.3) ordering
+  3) Inlined attributes:
+    3.1) visibility / name : typemultiplicity = default
+         visibility ::= {+|-|#|~}
+         multiplicity ::= [lower..upper]
+  4) Attributes by relationship
+    4.1) The relationship notation results in a larger
+         class diagram, but it can provide greater detail
+         for complex attribute types.
+    4.2) The relationship notation also conveys exactly
+        how the attribute is contained within a class.
+    4.3) To represent an attribute using relationships you
+      use one of the association relationships between
+      the class containing the attribute and the class
+      that represents the attributes.
+ 5) Relationship notation supports the same syntax as inlined
+    notation, though the layout is slightly different.
+ 6) The attribute's visibility and name are placed near
+    the relationship line.
+ 7) Don't use square brackets for multiplicity, but do
+    place the multiplicity specification near the attribute's
+    classifier.
+ 8) Besides multiplicity, you can place constraints on
+    attri's    
