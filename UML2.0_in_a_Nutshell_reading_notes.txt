@@ -109,3 +109,92 @@ Chatper 2 Class diagrams
     classifier.
  8) Besides multiplicity, you can place constraints on
     attri's    
+
+Chapter 10 Interaction diagrams
+1 Interaction diagrams are defined by UML to emphasize the communication betw-
+  een objects(not the data manipulation associated with that communication).
+2 Interaction diagrams focus on specific messages between objects and how the-
+  se messages come together to realize functionality(while composite structure
+  show what objects fit together to fulfill a particular requirement, interac-
+  tion diagrams show exactly how those objects will realize it).
+3 Sequence diagrams are by far the most common way to show the details of an
+  interaction.
+4 You can introduce local variables to accurately capture the behavior you are
+  trying to model.
+  Local variables can hold return values, loop information, or just data you
+  need for later processing.
+  In addition to local variables, sequence diagrams can access data in the 
+  participants.
+5 Messages
+  The focus of interaction diagrams is on the communication between lifelines.
+  This communication can take many different forms: method calls, sending a
+  signal, creating an instance, destorying an object, etc..
+  All of which are collectively called messages.
+  A message specifies the kind of communication, its sender, and its receiver.
+  1) The most common use of messages is to represent method calls between two
+    objects. When messages are used to indicate a method call, you can show t-
+    he parameters passed to the method in the message syntax.
+4 Interaction participants
+  1) You show participants in an interaction using a rectangle called a life-
+    line. The term lifeline illustrates UML's bias toward representing inter-
+    action diagrams using the sequence diagram notation.
+  2) 
+5 UML defines two special types of messages: lost messages and found messages:
+  1) Lost messages:
+    Lost messages are messages that are sent but never reach their destination.
+  2) Found messages:
+    Found messages are messages are received but the sender is unknown.
+  3) Understand that unknown senders and receivers are relative concepts, the
+    sender or receiver of a message may be unknown as far as a particular int-
+    eraction is concerned, meaning it's really outside the scope of what you
+    are trying to show.
+6 Occurrences:
+  1) Execution occurrences: indicating that an object is involved in execution 
+  2) Event occurrences: the smallest building blocks of interaction diagram
+  3) Interaction occurrences: is shorthand for copying one interaction into an-
+    other.
+7 Execution occurrences
+  1) The execution occurrence is to show that an object is involved in execut-
+    ing some type of action(typically a method call) for a measurable amount of
+    time.
+  2) It indicate that an object is busy for some period of time.
+8 Event Occurrences
+  1) Event occurrences are the smallest building blocks of interaction diagra-
+    ms; they represent moments in time when something happens.
+  2) If object1 sends a message to object2, there are two event occurrences, a
+    message send and a message receive. UML carefully defines interaction frag-
+    ments as a set of event occurrences where ordering is significant because 
+    they represent events over time.
+  3) Each type of interaction diagram notation(sequence, communication, etc.) 
+    has a way of expressing the time-sensitive nature of the event occurrences.
+  4) In a sequence diagram the event occurrences are ordered along the lifelin-
+    es and are read from top to bottom.
+  5) Parallel 
+    step1:
+      a
+      b
+      c
+    step2:
+      A
+      B
+      C
+    parallel(correct):
+      a
+      b
+      A
+      c
+      B
+      C
+    parallel(incorrect, because step2 is not in order):
+      a
+      b
+      B
+      c
+      A
+      C
+  6) General ordering
+    UML has an explicit notation called a general ordering, you can show a 
+    general ordering anywhere in an interaction diagram, but it must connect
+    two event occurrences.
+  
+9 State Invariants
