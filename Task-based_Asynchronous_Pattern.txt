@@ -1,0 +1,21 @@
+  Task-based Asynchronous Pattern(TAP) uses a single method to represent the initiation and completion
+of an asynchronous operation.
+  It is the recommended approach to asynchronous programming in the .NET Framework. The async and await
+keywords in C# add language support for TAP.
+  The TAP method returns either a System.Threading.Tasks or a System.Threading.Tasks.Task<TResult>, based
+on the corresponding sychronous method returns void or a type TResult.
+  out and ref parameters should be avoided entirely, any data that would have been returned through an
+out or ref parameter should instead be returned as part of the TResult returned by Task<TResult>, and
+should use a tuple or a custom data structure to accommodate multiple values.
+  Initiating an Asynchronous operation, synchronous work should be kept to the minimum so the asynchronous
+method can return quickly:
+  (1) asynchronous methods may be invoked from user interface threads, and any long-running synchronous
+work would harm the responsiveness of the application. 
+  (2) multiple asynchronous methods may be launched concurrently, therefore, any long-running synchronous
+methods could delay the initiation of other asynchronous operations, thereby decreasing the benefits of
+concurrency.
+  Exceptions:
+  (1) An asynchronous method should raise an exception to be thrown out of the asynchronous method call
+only in response to a usage error. Usage errors should never occur in production code(means preventing
+such errors in the calling code).
+  
