@@ -1,0 +1,136 @@
+﻿
+What Is Asynchronous Programming?
+Written by Mike James   
+Friday, 28 June 2013
+Article Index
+What Is Asynchronous Programming?
+Non-blocking calls
+
+Page 1 of 2
+  Asynchronous programming has become very important in the last few years, but many programmers find out about it by doing it. So what exactly is asynchronous programming, why is it necessary and why is it growing in importance?
+  Before getting started, this is a down to earth introduction to asynchronous programming and not a mathematical analysis. It is possible to make the whole subject seem so complicated that it is a miracle that we make use of it at all. 
+  Asynchronous programming has been with us from the very early days of computing because of the need to make the best use of the hardware. But recently it has become almost the standard programming paradigm. So much so that you could say that most programs written today are object oriented asynchronous programs. Often the programmer is fully aware that what they are doing is object oriented but only vaguely aware that they are writing asynchronous code. 
+  It all starts with the User Interface (UI). If you allow the user to interact with your program by clicking buttons and selecting object then you have an immediate problem:
+What is your program doing when the user isn't clicking or selecting something?
+  The obvious answer is nothing at all. Your program has to wait until the user gives it something to do. This is the case whenever your program interacts with the user even if it is simply waiting at the command line for the user to type something in. You can implement this sort of system using poling. That is your program can go around the UI asking the question "has this button been clicked" and "has this button been clicked" and so on. This ties up resources looping around the UI just checking in case something has happened. 
+  This isn't how most UI frameworks organize things. Instead they implement an event handling system. The user clicking a button is defined as an event and you can associate code with each event - the event handler. When the event occurs the event handler is run. 
+This is such a familiar pattern that we hardy give it a second thought but you should. For example, suppose there are three buttons on the screen and the user clicks on all three at high speed - do three different event handlers get started? 
+  In most cases the answer is no only one even handler is started at a time. The most common event handling architecture is single threaded - that is it only has one thread of execution and at any one time only one instruction in your entire program is being obeyed. 
+This single threaded event handling system is nearly always implemented using an event or message queue. The idea is that while your program is doing nothing its thread looks after the event queue. When an event happens a record of the event is added to the queue and when your program's thread isn't doing anything it looks at the event queue and takes the first event from the front and starts running the corresponding event handler. When that event handler completes the thread goes back to the event queue to process any events that might have happened in while it was busy. 
+  So events are added to the event queue and the UI framework provides a dispatcher that runs on your thread and calls the event handlers as needed. At any moment the program's thread is either in the dispatcher finding out what event it has to process next or in an event handler. 
+This is a single threaded event system.
+  The OS, Threading And True Parallism
+  You might at this point ask the very reasonable question of how an event gets put into the event queue while the program's thread is off running an event handler? The answer is that the operating system has lots of threads and it can respond to the user and place a message into the event queue. 
+  Now we hit a subtle point that might confuse you if you don't know much about operating systems and hardware. Until quite recently there only ever was one thread of execution in a typical machine. The multiple threads that were provided by the operating system are created by preemptive scheduling - only one thread runs at any one time and the OS switches which is the active thread.
+  In this sense the entire machine OS is a single threaded system. The main distinction being that the OS is preemptive and threads can be interrupted part way though and an event driven system is cooperative in the sense that an event handler, once started runs to completion. It is this preemptive - cooperative difference that is important.
+  The final complication is that modern machine have multiple cores and this means that they can support more than one thread of execution and hence are capable of true parallelism.
+  For the moment we can ignore this detail - important though it is.
+  Asynchronous Code
+  So a single threaded event system works by placing events in a queue and processing them one-by-one calling the appropriate event handler. The even-hander runs until it completes when it returns control to the dispatcher which deals with the next event in the queue. 
+  This is an asynchronous system because you cannot say exactly when anything is going to happen. There is no set order that your code will be executed in. You may have a program of 1000 instructions say but you cannot say what the order of its execution is. What happens depends on what buttons and options the user clicks. Event handlers are called in many different orders. 
+  If you just consider this idea for a moment it might seem amazing that we can write asynchronous code at all. All those different ways it can be run! Of course the point is that the system is made simpler by the restriction that only one event handler runs at a time and it always runs to completion. The interactions between event handlers are made simpler by this restriction. To put it another way event handlers are atomic, i.e. indivisible, actions. 
+  Now we come to the problem of the single threading. 
+  If any event handler takes a long time or worse never returns then the UI seems to freeze. The reason is simply that if the event handler never returns the thread to the dispatcher and hence no other event handler ever gets to run. If the event handler holds the thread for any noticeable length of time then events are not processed and the user thinks that the UI is unresponsive for that time. 
+  The cure for this problem is to keep the work done by any event handler to a minimum. In a sense the event handling system is a cooperative multitasker and it in this case it is the duty of every event handler to return control to the dispatcher as soon as possible.
+  So what do you do if an event handler has a substantial amount of work to do?
+  The textbook answer is that you simply use the event handler to set up another thread and get the new thread to do all the work. The event handler returns almost at once and the new thread continues to do the job. 
+  This use of a new thread causes problems of synchronization that we will return to a little later. In short adding threads to a single threaded event system makes it much more complex. 
+  Hence the non-textbook none approved way of dealing with long running event handlers - doEvents. 
+  Some languages, Visual Basic for example have a special doEvents command which acts like a yield command - in that it transfers control to the calling routine, the dispatcher in this case, which processes all of the pending events and then transfers control back to the suspended event handler.
+  Languages that don't have a doEvents or similar can often implement the same thing if they provide access to the despatcher from running event handlers. Basically the event handler puts an event record at the end of the queue that restarts it and then returns control to the dispatcher. 
+  This seems the ideal solution. A long running event hander cooperatively yeilds the thread of execution so that other events can be processed and the UI kept active. When the events have been processed then the long running event handler is resumed. 
+It is indeed a good solution but it has a flaw that is so serious that many give the advice that it is to be avoided at all cost and it's bad practice.  The flaw is simply that the event handler that yields control is now no longer atomic. It is interrupted at some point in its code and other event handlers could change things that it is using. Worse it could even be called again as the result of an event in the queue. Most event handlers are not reenterable and things could get very complicated. 
+  However a programmer, aware of these difficulties can make doEvents work. You have to take account of the fact that shared resources could change after a doEvents and you have to reject any attempt to start the event handler again while is is still active.
+  Both of these are usually easy to achieve and arguably much easier than starting a worker thread to get the same job done.
+  However for beginners the rule "don't use doEvents" is a safe one.
+
+  Non-Blocking
+  The idea of having an event handler return almost at once is the ideal in a single threaded event driven system. This is often refered to as a non-blocking call as opposed to a blocking call which stops the rest of the system moving on because it takes so long. In most cases a blocking call can be converted to a non-blocking call by the simple expedient of returning before its job is done. 
+  We have already met one big example of converting a blocking to a non-blocking call when the idea of using a new thread to get an event handlers task completed. 
+  The idea is that if you have a event handler
+onEvent(){
+ do a lot of work that takes ages;
+ return;
+}
+then you convert it into:
+onEvent(){ 
+ Create new thread;
+ Use thread to run getWorkDone();
+ return;
+}
+  This looks very simple but it raises a whole new problem. Usually the way that the applciation behaves depends on the completion of the event handler's task. For example if the event handler was say loading an image over the internet then perhaps the next action that the user takes depends on its completion. The point is that now the application needs to know when the getWorkDone function has completed. 
+  In other words using a separate thread to complete the work of the event handler has produced a synchronization problem that disrupts the logical flow of the program. 
+It also introduces other problems associated with the thread shareing resources and accessing the UI but these are not really central to the problems of asynchronous code. 
+  Introducing a thread makes things more complex but we have little choice.
+
+Callbacks
+  The idea of converting a blocking function into a non-blocking one extends to functions which are not themselves event handlers. For example consider the getWorkDone function which takes a long time to complete. You could make it non-blocking by introducing a new thread. 
+getWorkDone(){
+ create new thread use it to call
+ getWorkDone2();
+ return:
+}
+  In the case of many system or framework functions you don't even have to imagine that they create a new thread you can regard them as simply returning at once even thought their job hasn't been completed. 
+  Using the non-blocking form of the getWorkDone function the event handler can be written more simply as:
+onEvent(){ 
+ getWorkDone();
+ return;
+}
+  Notice that now the writer of the event handler doesn't have to worry about creating a new thread or how to run getWorkDone to minimize the slowdown of the UI. 
+  However this solution, neat though it is, introduces another problem. Usually the event handler would want to do something with the result of getWorkDone. In general when ever a blocking function is converted into a non-blocking function we have the problem of what to do next. The problem is when getWorkDone completes some seconds after onEvent has returned there is no calling function for it to return to. What next?
+  This idea that a function might not know what to do after it finishes its task can be solved in many ways but they are all variations on the idea of continuation passing - i.e. passing an explicit something to do when the function has finished. 
+  The simplest and best know of these approaches is to pass a call back function to the non-blocking function that contains the code that is to be executed when the task is complete. 
+ onEvent(){ 
+ getWorkDone(onCompletion);
+ return;
+}
+  The onCompletion function is called when getWorkDone has finished. Notice that onCompletion looks a lot like an event handler and in fact there is very little difference. A call back function is just an event handler that responds to the completion of the non-blocking function.
+  Of course things are a little more complicated in that this sort of mechanism seems to modify the natural logic of a function. A function that was:
+onEvent(){ 
+ getWorkDone();
+ onCompletion
+ return;
+}
+is distorted into:
+onEvent(){ 
+ getWorkDone(onCompletion);
+ return;
+}
+  and while this example may not look so bad the reality is usually much worse. You might think of a function as loading an image, processing the image and then displaying it but you have to convert into a function that starts the download and an event handler that reacts to the completion of the download. In practice a function could be decomposed into many event handlers or call backs each dealing with the completion of some non-blocking function or other. 
+Dealing With Async
+  Given that asynchronous coding is so prevalent what can we do to make it better. First we need to try to explain what makes it worse.
+  Writing a collection of event handlers generally isn't a difficult thing to do and with the condition that they all return fast there isn't really any difficulty.
+  Where things get difficult is when you make use of a lot of non-blocking functions to make sure that event handlers return fast. The problem here is that calling non-blocking functions means passing call backs or completed event handlers depending on how you want to look at it. This is fine when you are only calling one non-blocking function to get a task done but this is usually not the case. 
+  Typically you need to perform a number of tasks and if the functions are blocking you might write:
+ funcA();
+ funcB();
+ funcC();
+  To convert this to a set of non-blocking functions would result in something like:
+
+funcA(function(){
+  funcB(function(){
+    funcC();
+  })
+ })
+
+  where it is assumed that each function is passed a callback as its only parameter. That is each function is passed a function which calls the next function in the sequence. This pyramid of doom style callbacks gets much worse in practice. 
+For the final example consider a loop:
+
+for(i=0;i<10;i++) funcA(i);
+
+and now convert it into a non-blocking call:
+
+function loop(i){
+ if(i>=10) return;
+ funcA(i,function(){
+     loop(i++);
+}(0);
+  
+  Assuming that funcA takes a callback as its second argument. Yes that's correct an enumeration loop turns into recursion with non-blocking calls. 
+There are lots of other problems - handling error conditions, dealing with exceptions and so on. 
+
+All in all asynchronous programming using callbacks in non-blocking functions isn't easy. 
+Are there any solutions?
+Yes - see Promises, async and await, yield and any number of flow of control libraries that convert the convoluted callback structure into something more familiar. 
+We will take a look at these solutions in the next article. 
+
