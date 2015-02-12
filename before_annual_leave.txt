@@ -1,0 +1,8 @@
+1 think about the logic of haulier planning again
+2 think about the logic of right-click and assign again
+3 think about how to test the right-click and assign feature
+4 make a testing plan
+5 in the afternoon:
+  5.1 test against the testing plan
+  5.2 take screenshots, if any problems, fix it
+  5.3 update the status to Mr. Lam
