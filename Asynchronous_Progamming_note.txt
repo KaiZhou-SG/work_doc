@@ -1,0 +1,80 @@
+>> A down to earth introduction to asynchronous programming
+
+1 In order to make the best use of the hardware, asynchronous programming
+ exists.
+2 Take User Interface programs for example:
+ when the user does nothing,
+ the hardware is just waiting, it's a waste. However, while the program
+ is working, it cannot accept the user input.
+3 To solve the problem, common UI framework has an event dispatching
+ and handling system:
+ 1) the dispatcher and handler together maintain an event queue
+ 2) the dispatcher looks after the event queue by adding a new event
+  to the end of the queue, and takes the first event from the queue
+  and pass it to the handler
+ 3) the handler gets the event the dispatcher passes to it, and exe-
+  cutes the codes
+ 4) the user interface is either in the process of dispatching or
+  handling
+ 5) in this way, the user interface program works asynchronously:
+  dispatching events while handing events, but how?
+4 The OS, threading and parallism
+ 1) Until very recently there are only ever was one thread of execution
+  in a typical machine.
+ 2) And the OS creates fake "multi-threadings" by preemptive scheduling.
+ 3) In such fake "multi-threadings" system, only one thread runs at any
+  one time and the OS switches which is the active thread.
+ 4) In this sense, the entire machine OS is a single threaded system.
+ 5) The OS is preemptive and threads can be interrupted part way through
+  and an event driven system is cooperative in the sense that an event
+  handler, once started runs to completion. It is the preemptive - coop-
+  erative difference that is important.
+ 6) The OS creates fake "multi-threads", and use one of them as the 
+  dispatcher and one of them as handler, and it then switches between
+  the two threads among all other threads.
+ 7) Modern machine have multiple cores and this means that they can
+  support more than one thread of execution and hence are capable of
+  true parallelism.
+ 8) But what happens when the event takes too long to run(it's 
+  preemptive), the dispatcher thread will have to wait, and the user
+  interface freezes. The solution is: Asynchronous programming.
+5 Asynchronous codes
+ 1) A single threaded event system works by placing events in a queue
+  and processing them one-by-one calling the appropriate event handler.
+ 2) The event-handler runs until it completes when it returns control
+  to the dispatcher which deals with the next event in the queue.
+ 3) The concept of Non-Blocking functions:
+  > It is ideal in a single threaded event driven system is that having
+   event handler return almost at once after it's started, and that is
+   often refered to as a non-blocking call as opposed to a blocking call
+   which stops the rest of the system moving on because it takes so long.
+  > e.g.
+   blocking codes:
+   onEvent()
+   {
+     // do a lot of work that take ages
+     return;
+   }
+   non-blocking codes:
+   onEvent()
+   {
+     // create a worker thread(a new thread to handle the work)
+     create_new_thread();
+     new_thread_to_run_getWorkDone();
+     return;
+    }
+   > The above codes looks very simple, but it raises a whole new problem:
+    1) a seperate thread to complete the work of the event handler will produce
+     a synchronization problem 
+    2) a seperate thread will share resources and cause conflicts
+    3) Introducing a thread makes things more complex but we have little 
+     choice.
+4 Callbacks
+  4.1 onEvent()
+      {
+       getWorkDoneAsynchronously(onCompletion);
+      }
+  4.2 The onCompletion() function is called when the asychronous function
+   getWorkDoneAsynchronously() is done.
+5 Dealing with Async
+  5.1 await, asyc, yield
