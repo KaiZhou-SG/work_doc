@@ -1,0 +1,41 @@
+<!DCOTYPE html>
+<html>
+ <head>
+  <title>The infrastructure of the simulator</title>
+  <link rel="stylesheet" type="text/css" href="global.css">
+ </head>
+ <body>
+  <h1 align="center">The infrastructure of the simulator</h1>
+  <h2>Front ends and back ends</h2>
+  <p>The simulator has both front ends and back ends</p>
+  <p>The fronts ends are:</p>
+  <ol>
+   <li>The Transport Planning Module(TM)</li>
+   <li>The Driver MDI(called MDI)</li>
+   <li>The Growth Venture Messaging Forwarder(Forwarder)</li>
+  </ol>
+  <p>The back ends are web services:</p>
+  <ol>
+   <li>The web service hosted by Innosys Pte Ltd(called WS1)</li>
+   <li>The web service hosted by Growth Venture Pte Ltd(called WS2)</li>
+  </ol>
+  <h2>How to deploy the above components</h2>
+  <ol>
+   <li>The two back ends will be installed to two different pcs with static ip and IIS</li>
+   <li>The TM will be installed on the pc which hosts WS1</li>
+   <li>The MDI will be installed on the pc which hosts WS2</li>
+   <li>The Forwarder will be installed on the pc which hosts WS2</li>
+  </ol>
+  <h2>How these components cooperate</h2>
+  <ol>
+   <li>TM send a message to WS1</li>
+   <li>WS1 processes and forwards the message to WS2</li>
+   <li>WS2 then sends the message to the Forwarder</li>
+   <li>The forwarder processes the message and send it to MDI</li>
+   <li>The MDI responses to the message by sending another message to WS1</li>
+   <li>WS1 responses to the message from MDI by making changes on TM schedule control</li>
+  </ol>
+  <p>P.S.<br> No acknowledgement messages are discussed so far.<br>
+   And to be compatible to what USS can provide, WS1 and WS2 will be installed into one pc.
+ </body>
+</html>
