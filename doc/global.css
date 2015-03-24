@@ -2,3 +2,9 @@ html *
 {
   font-family: Consolas !important
 }
+
+h1
+{
+	text-align: "center";
+	font-size: "10"
+}

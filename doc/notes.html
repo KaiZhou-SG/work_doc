@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>notes on the design of the messaging system(simulator)</title>
+  <link rel="stylesheet" type="text/css" href="global.css"/>
+ </head>
+ <body>
+  <h1>notes on the design of the messaging system(simulator)</h1>
+  <ol>
+  <li>separation of concerns:
+    <ol>
+     <li>seperation of systems and their implementations:
+      <ul>
+       <li>regard ipl and gv as two systems</li> 
+       <li>the two systems don't know the implementation details of each other</li>
+       <li>the two systems communicate via messages</li>
+      </ul>
+     </li>
+     <li>seperations within ipl system:
+      <ul>
+       <li>the ipl system is seperated into 4 parts:
+        <ol>
+         <li>the transport business logic layer(the bll)</li>
+         <li>the user interface layer(the ui)</li>
+         <li>the message entity layer(the me)</li>
+         <li>the web service server(the ws)</li>         
+        </ol>
+       <li>the dependencies of the above layers are:
+          <ol>
+           <li>bll</li>
+           <li>bll <-- me</li>
+           <li>bll, me <-- ui</li>
+           <li>bll, me <-- ws</li>
+          </ol>
+       </li>
+       </li>
+       <li>the messages are separated by message type codes:
+         <ol>
+          <li>the message type code is unique in ipl system</li>
+          <li>every message has a message type code</li>
+          <li>messages have different message type code has its own corresponding class
+          as well as a database table</li>
+         </ol>
+       </li>
+       <li>each message again is separated into two parts:
+        <ol>
+         <li>the message type code</li>
+         <li>the instruction, and the instruction contains:
+          <ul>
+  	        <li>sender identification</li>
+  	        <li>receiver identification</li>
+  	        <li>object identification</li>
+  	        <li>new status of the object</li>
+  	        <li>time stmp</li> 
+          </ul>
+         </li>
+        </ol>
+       </li>
+      </ul>
+     </li>
+    </ol>
+   </li>
+   <br/>
+   <li>how do ipl and gv collaborate:
+    <ol>
+     <li>generally speaking, ipl and gv collaborate via sending instructions</li>
+     <li>an instruction is carried by a message<br/>
+     So actually ipl and gv send instruction + message type code, but to be short, we say send instructions</li>
+     <li>a typical scenario is:
+      <ol>
+       <li>planner_ui sends an instruction to mdt</li>
+       <li>mdt responses to planner_ui</li>
+      </ol>
+     </li>
+    </ol>
+   </li>   
+  </ol>
+ </body>
+</html>
