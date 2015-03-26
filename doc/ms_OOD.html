@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   The Object Oriented Design of the Message System Simulator
+  </title>
+  <link rel="stylesheet" type="text/css" href="./global.css">
+ </head>
+ <body>
+  <h1 align="center">Object Oriented Design of the Messaging System Simulator</h1>
+  <p align="right">This document describes the clue of how is the Messaging System Simulator designed.</p>
+  <h2>Basic Principles</h2>
+  <p>The design should be flexible so that:</p>
+  <ol>
+   <li>Existing messages are easy to be amended, including adding or removing fields.</li>
+   <li>New messages are easy to be included into the system.</li>
+   <li>Messages and their responses are logged and retrievable.</li>
+   <li>Self aware so that it can perform error checking and log errors.</li>
+  </ol>
+  <h2>Detailed rules</h2>
+  <ol>
+   <li>Composition over inheritance, so that different type of messages don't affect each other.</li>
+   <li>A message is divided into head and body.</li>
+   <li>The type of a message can be uniquely identified by type_code.</li>
+   <li>Each message has own method to perform self-check.</li>
+  </ol>
+ </body>
+</html>

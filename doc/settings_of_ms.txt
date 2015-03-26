@@ -1,0 +1,4 @@
+1 .NET Framework 4.0
+2 x86
+3 32 bit
+4 ASP.NET 4.5
