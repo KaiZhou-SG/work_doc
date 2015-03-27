@@ -6,19 +6,46 @@
  </head>
  <body>
   <h1>notes on the design of the messaging system(simulator)</h1>
-  <ol>
-  <li>separation of concerns:
-    <ol>
-     <li>seperation of systems and their implementations:
+  <h2>The whole system is complex, we see its structure first:</h2>
+  <p>
+  -- the messaging system<br/>
+  -------the ipl sub system<br/>
+  -----------the transport application<br/>
+  ---------------the business logic layer<br/>
+  ---------------the data access layer<br/>
+  ---------------the user interface layer<br/>
+  -----------the messaging layer<br/>
+  ---------------the front end<br/>
+  -------------------the planner ui<br/>
+  -------------------the mobile device interface, namely the driver ui<br/>
+  ---------------the back end<br/>
+  -------------------the message entity layer<br/>
+  -------------------the data access layer<br/>
+  -------------------the web service listener + controller layer<br/> 
+  ------the gv sub system<br/>
+  </p>
+  <h2>A brief description of the above structure:</h2>
+  <p>
+  &nbsp;&nbsp;The whole system is called the messaging system, and it contains two<br/>
+  independent systems: the ipl system and the gv system.<br/>
+  &nbsp;&nbsp;The ipl sub system contains the transport application and the messaging layer.<br/>
+  And each of them has its own layers.
+  </p>
+  <p>&nbsp;&nbsp;The system analysis starts from investigating those layers.<br/>
+  And a good way to investigate layers is called "separation of concern". 
+  </p>
+  <h2>Separation of concerns:</h2>
+  <ol>  
+     <li>separation of independent systems
       <ul>
        <li>regard ipl and gv as two systems</li> 
        <li>the two systems don't know the implementation details of each other</li>
-       <li>the two systems communicate via messages</li>
+       <li>the two systems communicate via messages only</li>
       </ul>
      </li>
-     <li>seperations within ipl system:
+     <li>separation within ipl system:
       <ul>
-       <li>the ipl system is seperated into 4 parts:
+       <li>the ipl system is separated into 4 parts:
         <ol>
          <li>the transport business logic layer(the bll)</li>
          <li>the user interface layer(the ui)</li>
@@ -28,24 +55,25 @@
        <li>the dependencies of the above layers are:
           <ol>
            <li>bll</li>
-           <li>bll <-- me</li>
+           <li>me <-- bll</li>
            <li>bll, me <-- ui</li>
            <li>bll, me <-- ws</li>
           </ol>
        </li>
-       </li>
-       <li>the messages are separated by message type codes:
+      </ul>
+     </li>
+     <li>separation of message types
          <ol>
-          <li>the message type code is unique in ipl system</li>
           <li>every message has a message type code</li>
-          <li>messages have different message type code has its own corresponding class
-          as well as a database table</li>
+          <li>the message type code is unique in ipl system</li>         
+          <li>different message types are defined in different classes</li>
+          <li>different message types are stored into different database tables </li>
          </ol>
-       </li>
-       <li>each message again is separated into two parts:
+     </li>
+     <li>each message again is separated into two parts:
         <ol>
          <li>the message type code</li>
-         <li>the instruction, and the instruction contains:
+         <li>the instruction.<br/>and the instruction contains:
           <ul>
   	        <li>sender identification</li>
   	        <li>receiver identification</li>
@@ -53,15 +81,11 @@
   	        <li>new status of the object</li>
   	        <li>time stmp</li> 
           </ul>
-         </li>
+         </li> 
         </ol>
        </li>
-      </ul>
-     </li>
     </ol>
-   </li>
-   <br/>
-   <li>how do ipl and gv collaborate:
+   <h2>How do ipl and gv collaborate as a whole system</h2>
     <ol>
      <li>generally speaking, ipl and gv collaborate via sending instructions</li>
      <li>an instruction is carried by a message<br/>
@@ -72,8 +96,6 @@
        <li>mdt responses to planner_ui</li>
       </ol>
      </li>
-    </ol>
-   </li>   
-  </ol>
+    </ol>   
  </body>
 </html>
