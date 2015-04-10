@@ -1,8 +1,3 @@
-DROP TABLE MS_Report_Trip_Body_Tbl
-GO
-DROP TABLE MS_Report_Trip_Head_Tbl
-GO
-
 CREATE TABLE MS_Report_Trip_Head_Tbl (
   Msg_Id BIGINT NOT NULL,
   Msg_Code NVARCHAR(3) NOT NULL,

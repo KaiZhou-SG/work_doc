@@ -1,7 +1,7 @@
 --DROP TABLE MS_SE1stBody_Tbl
 --GO
 
-CREATE TABLE MS_SE1stBody_Tbl (
+CREATE TABLE MS_SE1st_Body_Tbl (
   Msg_Id BIGINT NOT NULL,
   Schedule_Date NVARCHAR(10) NOT NULL,
   Trip_Start_Time NVARCHAR(4) NOT NULL,

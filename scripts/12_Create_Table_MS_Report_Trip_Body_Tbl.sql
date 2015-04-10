@@ -1,7 +1,6 @@
 CREATE TABLE MS_Report_Trip_Body_Tbl (
   Msg_Id BIGINT NOT NULL,
   Msg_Code NVARCHAR(2) NOT NULL,
-  -- Msg_Type_Code NVARCHAR(3) NULL,
   Container_No1 NVARCHAR(20) NOT NULL,
   Container_No2 NVARCHAR(20) NULL,
   Seal_No1 NVARCHAR(20) NOT NULL,

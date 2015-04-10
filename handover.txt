@@ -1,0 +1,9 @@
+the list of resources on my hand:
+
+1 source codes of messaging_system:
+  d:\message_system_workCopy 
+
+2 documentations of messaging_system:
+  d:\workLog\static\projects\work_doc
+
+-- that's all

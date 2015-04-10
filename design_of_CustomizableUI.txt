@@ -1,14 +1,14 @@
 Requirement analysis
 
-  Different perfer different user interface wordings, and layouts. WinForm hardcoded the UI into the busi-
-ness codes, results in that whenever a user wants a slight change on UI display we have to modify the bus-
+  Different customer prefers different user interface wordings, and layouts. WinForm hard-coded the UI into the busi-
+ness codes, results in that whenever a user wants a change on UI display we have to modify the bus-
 iness codes.
   This solution will provide a separated .xml file which contains the wordings and layouts of the UI, and
-the logic codes read the .xml file to change the UI, this is called "configuration over convention". By t-
+have specific codes read the .xml file to change the UI, this is called "configuration over convention". By t-
 he way, "convention" means we assume that all customers use the same wordings and layouts, "configuration"
 means the .xml file.
   Basically, the idea is that each form in the WinForm program will have its own section in the .xml file,
-and when the form pops up, it reads the .xml file first and change its wording and layouts. Different 
+and when the form pops up, it reads the .xml file first and change its wording and layouts before showing. Different 
 customers will have different .xml files.
 
 Specifications
@@ -21,13 +21,13 @@ Specifications
     property
   (5) Usually we only care about the Text and Index properties of a control, because they represent
     the wording and sequencing of a control
-  And create a general function that will read the .xml file, and looks for the section for the current f-
+  And create a general function that will read the .xml file, looks for the section for the current f-
 orm first, then looks for the mappings between the controls on the form and the elements in that section
 in the .xml file.
   After the section is found and the mappings are finished, the function proceeds to change the values
 of the properties, usually the Text and Index properties. And the function will throw exceptions when
-no section is found or errors occurs during the mapping, to remind that we need to check the .xml file,
-and the UI of the application will not be configured.
+no section is found or errors occurs during the mapping, reminding that we need to check the .xml file,
+and the UI of the application will show default layouts.
 
 Design
   A sample of the .xml file:

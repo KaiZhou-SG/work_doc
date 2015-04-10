@@ -14,9 +14,9 @@ INSERT INTO MS_Message_Types_Tbl(Msg_Code, Msg_Type_Code,
   ('16', 'RT2', 'Driver report a SE2nd leg is completed'),
   ('17', 'RT3', 'Driver report a SI1st leg is completed'),
   ('18', 'RT4', 'Driver report a SI2nd leg is completed'),
-  ('16', 'AK1', 'GV acknowledges TM on receiving trip registering messages'), -- it can be driver acknowledges 
-  ('17', 'AK2', 'Acknowledgement from driver on receiving a trip instruction'),
-  ('18', 'AK3', 'TM acknowledges GV on receiving trip requesting messages')
+  ('20', 'AK1', 'GV acknowledges TM on receiving trip registering messages'), -- it can be driver acknowledges 
+  ('21', 'AK2', 'Acknowledgement from driver on receiving a trip instruction'),
+  ('22', 'AK3', 'TM acknowledges GV on receiving trip requesting messages')
                                          -- to TM of trip received or TM refusing driver' trip request, 
 										 -- any kind of acknowledge messages
 
