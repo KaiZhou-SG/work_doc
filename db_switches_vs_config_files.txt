@@ -1,0 +1,40 @@
+ db switches and config files are used for different scenarios:
+
+>> put these information in the config files
+
+1 sql server related:
+  a) physical server ip address
+  b) sql server ip address 
+  c) sql server instance name
+  d) sql server database name
+  e) login id and password of the above database
+
+2 web service related:
+  a) web service base address
+
+3 UI configurations:
+  a) form_id
+  b) control_id
+  c) property name + property value
+
+4) conclusion:
+  a) the config file is the first external information that an application approaches
+    while it starts up, otherwise, the application will fail to start
+  b) all installations have exactly the same keye in the config file(only the values 
+    are different        
+  c) confidential information will not be placed in the config file, as it's plain-text 
+  d) config file is relatively static 
+  e) different value of a same key does not mean a different logic, the logic is always
+    the same, such as login to database, it's only using different values to perform
+    the logic
+
+>> put these information in db switches:
+
+1 confidential information that don't want the user to view or modify
+2 installation based switches, different installation may have different switches
+3 logic will change based on the value of switches, or even the presence of the 
+    switches
+4 the total of switches are quite dynamic, new keys are offten added, and every
+    new switch means a different logic branch
+
+  
