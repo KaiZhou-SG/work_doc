@@ -7,6 +7,7 @@ CREATE TABLE MS_Trip_Update_Body_Tbl (
   Seal_No1 NVARCHAR(20) NOT NULL,
   Seal_No2 NVARCHAR(20) NULL,
   Report_Time NVARCHAR(16) NOT NULL,
+  DO NVARCHAR(20), 
 
   CONSTRAINT pk_ms_trip_update PRIMARY KEY (Msg_Id, Msg_Code, Msg_SubCode, Report_Time),
   CONSTRAINT fk_rpt_trip_body_rpt_trip_head FOREIGN KEY (Msg_Id, Msg_Code, Msg_SubCode)
