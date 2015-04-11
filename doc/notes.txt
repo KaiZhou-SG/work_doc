@@ -1,3 +1,46 @@
+update 2015-04-11
+1 mappings of the message code system between GV and IPL:
+  a GV message code system has two levels:
+    a1 MessageCode
+    a2 Sub-fields
+  b IPL message code system has three levels:
+    b1 MessageCode
+    b2 MessageTypeCode
+    b3 Description
+  c mappings
+    MessageCode <--> MessageCode, one to one
+    MessageTypeCode(IPL) <--> MessageCode(IPL), many to one
+    MessageTypeCode(IPL) <--> Description(IPL), one to one
+    Sub-fields(GV) <--> Description(IPL), one to one
+
+2 new design according to the document(2015-02-02) GV sent yesterday(2015-04-10)
+  2.1 add carrierRefNo and MsgSubCode to MessageHead class --> so SE1stHead and SE2ndHead classes are to be updated
+  2.2 add a new class: MessageBody, put MsgId, ScheduleDate, TripStartTime, TripEndTime, MsgTypeCode,
+     PlannerId, MsgTime and Remark into this class
+  2.3 SE1stLegBody and SE2ndLegBody inherit from MessageBody --> so SE1stLegBody and SE2ndLegBody are
+    going to be updated
+  2.4 SI1stLegBody and SI2ndLegBody inherit from MessageBody --> so SI1stLegBody and SI2ndLegBody are
+    going to be updated
+  2.5 All the related DAL are going to be updated
+  2.6 The design of MsessageType class changed:
+    2.6.1 It now contains three fields: MsgCode, MsgSubCode, Details 
+    2.6.2 MsgCode only has two values: TI01 and TU01
+    2.6.3 For TI01, MsgSubCode will be COL, EXP, IMP, RTN, FWD
+    2.6.4 For TU01, MsgSubCode is optional
+    2.6.5 For TI01, Details is optional
+    2.6.6 For TU01, Details contains 01,02,...,07 + value pairs, separated by ~ 
+          e.g. 01 --> no value
+          e.g. 02=PCIU9985660~03=9957~04=TRC448Y --> three pairs
+  2.7 there are still msg_id in the class and database tables, for purposes of:
+    2.7.1 we still decide not to mix up all kinds of instruction messages(COL, EXP, IMP, FWD) into one
+      database table, there're a lot of potential risk by mixing them up  
+    2.7.2 we still separate a message into head and body, and how a message body is going to find its head,
+      by msg_id, msg_code, msg_subCode
+    2.7.3 I'll experiment making msg_id auto increasing 1, instead of manually generate
+    
+
+
+<<<< old
 1 add remarks
 2 prime mover + driver
 3 

@@ -3,11 +3,12 @@
 
 CREATE TABLE MS_SE1st_Body_Tbl (
   Msg_Id BIGINT NOT NULL,
-  Msg_Code NVARCHAR(2) NOT NULL,
+  Msg_Code NVARCHAR(4) NOT NULL,
+  Msg_SubCode NVARCHAR(3) NOT NULL,
   Schedule_Date NVARCHAR(10) NOT NULL,
   Trip_Start_Time NVARCHAR(4) NOT NULL,
   Trip_End_Time NVARCHAR(4) NOT NULL,
-  -- Msg_Type_Code NVARCHAR(3) NOT NULL,
+  
   Vessel NVARCHAR(30) NOT NULL,
   Voyage NVARCHAR(30) NOT NULL,
   Book_Ref_No NVARCHAR(20) NOT NULL,
