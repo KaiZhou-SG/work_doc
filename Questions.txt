@@ -1,3 +1,11 @@
+2015-04-22 updates
+
+1 Can we add planner_id into the Message Head?
+2 The legacy problems:
+  2.1 Internal vehicle number V.S. LTA registered vehicle number
+  2.2 How to deal with known typo in the TripUpdate01 messages from the driver
+  2.3 Set default {driver, vehilce} pair base on date period
+
 2015-04-11 updates
 
 1 notes to the document from GV: Web Service Interface between GV and Innosys Version 1.0
